@@ -41,7 +41,8 @@ router.put("/workouts/:id", (req, res) => {
 });
 
 router.get("/workouts/range", (req, res) => {
-  db.Workout.find()
+  db.Workout.find({})
+    .sort({ duration })
     .then((workout) => {
       res.send(workout);
     })
