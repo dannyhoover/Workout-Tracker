@@ -30,14 +30,24 @@ router.put("/workouts/:id", (req, res) => {
     $push: {
       exercises: { type, name, duration, weight, sets, reps, distance },
     },
-  }).then((workout) => {
-    res.send(workout);
   })
-  .catch((err) => {
-    console.error(err);
-    res.status(400).end();
-  });
+    .then((workout) => {
+      res.send(workout);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).end();
+    });
 });
-router.get("/workouts/range", (req, res) => {});
 
+router.get("/workouts/range", (req, res) => {
+  db.Workout.find()
+    .then((workout) => {
+      res.send(workout);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).end();
+    });
+});
 module.exports = router;
