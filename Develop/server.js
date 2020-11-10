@@ -18,7 +18,7 @@ app.use(serveStatic("public"))
 app.use(require("./routes"));
 
 mongoose
-  .connect("mongodb+srv://danny060893:AshleyFlock08@cluster0.y7ql1.mongodb.net/workout-db?retryWrites=true&w=majority" || "mongodb://localhost/workout", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
