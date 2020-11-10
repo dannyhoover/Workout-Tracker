@@ -17,14 +17,18 @@ app.use(serveStatic("public"))
 
 app.use(require("./routes"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true
-}).then(() => {
-  app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`);
+mongoose
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
   })
-}).catch((err) => {
-  console.error(err);
-})
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`App listening on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
