@@ -13,7 +13,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use(serveStatic("public"))
+app.use(serveStatic("Develop/public"))
 
 app.use(require("./Develop/routes"));
 
