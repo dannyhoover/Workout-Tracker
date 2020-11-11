@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.use(serveStatic("public"))
 
-app.use(require("./routes"));
+app.use(require("./Develop/routes"));
 
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
